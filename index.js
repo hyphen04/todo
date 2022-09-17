@@ -8,104 +8,20 @@ const todoList = () => {
     }
   
     const overdue = () => {
-      // Write the date check condition here and return the array of overdue items accordingly.
-      // FILL YOUR CODE HERE
-      // ..
-      // ..
-      // ..
-      let overdues = [];
-      all.forEach(i => {
-        if (i.dueDate == yesterday){
-          overdues.push(i);
-        }  
-      });
-      return overdues;
+      return all.filter((item) => item.dueDate === yesterday)
     }
   
     const dueToday = () => {
-      // Write the date check condition here and return the array of todo items that are due today accordingly.
-      // FILL YOUR CODE HERE
-      // ..
-      // ..
-      // ..
-      let dueToday = [];
-      all.forEach(i => {
-        if (i.dueDate == today){
-          dueToday.push(i);
-        }  
-      });
-      return dueToday;
+      return all.filter((item) => item.dueDate === today)
     }
   
     const dueLater = () => {
-      // Write the date check condition here and return the array of todo items that are due later accordingly.
-      // FILL YOUR CODE HERE
-      // ..
-      // ..
-      // ..
-      let dueLater = [];
-      all.forEach(i => {
-        if (i.dueDate == tomorrow){
-          dueLater.push(i);
-        }  
-      });
-      return dueLater;
+      return all.filter((item) => item.dueDate === tomorrow)
     }
   
     const toDisplayableList = (list) => {
-      // Format the To-Do list here, and return the output string as per the format given above.
-      // FILL YOUR CODE HERE
-      // ..
-      // ..
-      // ..
-      // return OUTPUT_STRING
-      const output = (i, start ,date) => {
-        
-        
-      }
-      let a = [];
-      list.forEach(i => {
-        if (i.completed == true){
-          if (i.dueDate == yesterday){
-            let start = "[x]";
-            let title = i.title
-            let output_string = start + " " + title + " " + yesterday
-            a.push(output_string);
-          } else if (i.dueDate == today) {
-            let start = "[x]";
-            let title = i.title
-            let output_string = start + " " + title
-            a.push(output_string);
-          } else {
-            let start = "[x]";
-            let title = i.title
-            let output_string = start + " " + title + " " + tomorrow
-            a.push(output_string);
-          }
-          
-        } else {
-          
-          if (i.dueDate == yesterday){
-            let start = "[ ]";
-            let title = i.title
-            let output_string = start + " " + title + " " + yesterday
-            a.push(output_string);
-          } else if (i.dueDate == today) {
-            let start = "[ ]";
-            let title = i.title
-            let output_string = start + " " + title
-            a.push(output_string);
-          } else {
-            let start = "[ ]";
-            let title = i.title
-            let output_string = start + " " + title + " " + tomorrow
-            a.push(output_string);
-          }
-        }
-        
-      });
-      let str = a.join("\n")
-      return str
+      
+      return list.map(item => `${item.completed ? `[x]`: `[ ]`} ${item.title} ${item.dueDate === today}`).join('\n')
     }
   
     return { all, add, markAsComplete, overdue, dueToday, dueLater, toDisplayableList };
